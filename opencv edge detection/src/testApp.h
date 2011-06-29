@@ -4,10 +4,10 @@
 #include "ofMain.h"
 
 #include "ofxOpenCv.h"
+#include "ofxDelaunay.h"
 
-#define _USE_LIVE_VIDEO		// uncomment this to use a live camera
+//#define _USE_LIVE_VIDEO		// uncomment this to use a live camera
 								// otherwise, we'll use a movie file
-
 
 class testApp : public ofBaseApp{
 
@@ -25,6 +25,8 @@ class testApp : public ofBaseApp{
 		void windowResized(int w, int h);
 
         void createPoints();
+        void scaleToSize();
+        void drawPoints( int x, int y );
     
         #ifdef _USE_LIVE_VIDEO
 		  ofVideoGrabber 		vidGrabber;
@@ -39,6 +41,7 @@ class testApp : public ofBaseApp{
 		ofxCvGrayscaleImage 	grayDiff;
 
         ofxCvGrayscaleImage     thresh_resized;
+        ofxDelaunay             triangulator;
     
         ofxCvContourFinder 	contourFinder;
 

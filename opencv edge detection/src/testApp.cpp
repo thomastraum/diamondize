@@ -24,6 +24,8 @@ void testApp::setup(){
     
 	bLearnBakground = true;
 	threshold = 80;
+    
+    ofSetFrameRate(5);
 }
 
 //--------------------------------------------------------------
@@ -70,6 +72,7 @@ void testApp::update(){
 void testApp::createPoints()
 {
     points.resize( 0 );
+    triangulator.reset();
     
     thresh_resized.resize( grayDiff.width, grayDiff.height );
     thresh_resized = grayDiff;
@@ -78,22 +81,34 @@ void testApp::createPoints()
     unsigned char * pixels = thresh_resized.getPixels();
     int length = thresh_resized_width * thresh_resized_height;
     
-    cout << "before: " << points.size() << endl;
-    
     for (int i=0; i<length; i++) {
-//        cout << pixels[i] << endl;
-        if (pixels[i] > 1 ){
-            int x = i % thresh_resized_width;
-            int y = i / thresh_resized_width;
+        if (pixels[i] > 0 && ofRandom(0, 1) < .5 ){
+            float x = i % thresh_resized_width / (float)thresh_resized_width ;
+            float y = i / thresh_resized_width / (float)thresh_resized_height;
             ofPoint point = ofPoint(x,y);
-            
             points.push_back( point );
             
-//            cout << "point.x" << point.x << endl;
-//            cout << "point.y" << point.y << endl;
+            triangulator.addPoint(x*ofGetWidth(), y*ofGetHeight());
         }
     }
+    
+    triangulator.addPoint( 0, 0 );
+    triangulator.addPoint( ofGetWidth(), 0 );
+    triangulator.addPoint( ofGetWidth(), ofGetHeight() );
+    triangulator.addPoint( 0, ofGetHeight() );
+    
     cout << points.size() << endl;
+    
+    triangulator.triangulate();
+}
+
+
+void testApp::drawPoints( int x, int y )
+{
+    ofSetColor(255, 0, 0);
+    for (int i=0; i<points.size(); i++) {
+        ofCircle(x + points[i].x * grayDiff.width, y + points[i].y * grayDiff.height, 3);
+    }
 }
 
 
@@ -101,14 +116,17 @@ void testApp::createPoints()
 void testApp::draw(){
 
 	// draw the incoming, the grayscale, the bg and the thresholded difference
-	ofSetColor(0xffffff);
-	colorImg.draw(20,20);
-	grayImage.draw(360,20);
-//	grayBg.draw(20,280);
-	grayDiff.draw(360,280);
-
-    thresh_resized.draw(20,280);
-    
+//	ofSetColor(0xffffff);
+//	colorImg.draw(20,20);
+//	grayImage.draw(360,20);
+////	grayBg.draw(20,280);
+//	grayDiff.draw(360,280);
+//
+//    thresh_resized.draw(20,280);
+//    drawPoints(20,280);
+//    
+	ofSetColor(0, 255, 0);
+    triangulator.drawTriangles();
 
 	// finally, a report:
 
