@@ -24,6 +24,8 @@ class testApp : public ofBaseApp{
 		void mouseReleased(int x, int y, int button);
 		void windowResized(int w, int h);
 
+        void createPoints();
+    
         #ifdef _USE_LIVE_VIDEO
 		  ofVideoGrabber 		vidGrabber;
 		#else
@@ -36,13 +38,16 @@ class testApp : public ofBaseApp{
 		ofxCvGrayscaleImage 	grayBg;
 		ofxCvGrayscaleImage 	grayDiff;
 
-        ofxCvGrayscaleImage     edgeImage;
+        ofxCvGrayscaleImage     thresh_resized;
     
         ofxCvContourFinder 	contourFinder;
 
 		int 				threshold;
 		bool				bLearnBakground;
-
+    
+        int                 thresh_resized_width;
+        int                 thresh_resized_height;
+        vector<ofPoint>     points;
 
 };
 

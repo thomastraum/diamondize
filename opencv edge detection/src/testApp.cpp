@@ -17,8 +17,11 @@ void testApp::setup(){
 	grayBg.allocate(320,240);
 	grayDiff.allocate(320,240);
     
-    edgeImage.allocate(320,240);
-
+    thresh_resized.allocate(320,240);
+    
+    thresh_resized_width    = 80;
+    thresh_resized_height   = 60;
+    
 	bLearnBakground = true;
 	threshold = 80;
 }
@@ -59,9 +62,40 @@ void testApp::update(){
 		// also, find holes is set to true so we will get interior contours as well....
 //		contourFinder.findContours(grayDiff, 20, (340*240)/3, 1, true);	// find holes
         
+        createPoints();
 	}
-
+    
 }
+
+void testApp::createPoints()
+{
+    points.resize( 0 );
+    
+    thresh_resized.resize( grayDiff.width, grayDiff.height );
+    thresh_resized = grayDiff;
+    thresh_resized.resize( thresh_resized_width, thresh_resized_height );
+    
+    unsigned char * pixels = thresh_resized.getPixels();
+    int length = thresh_resized_width * thresh_resized_height;
+    
+    cout << "before: " << points.size() << endl;
+    
+    for (int i=0; i<length; i++) {
+//        cout << pixels[i] << endl;
+        if (pixels[i] > 1 ){
+            int x = i % thresh_resized_width;
+            int y = i / thresh_resized_width;
+            ofPoint point = ofPoint(x,y);
+            
+            points.push_back( point );
+            
+//            cout << "point.x" << point.x << endl;
+//            cout << "point.y" << point.y << endl;
+        }
+    }
+    cout << points.size() << endl;
+}
+
 
 //--------------------------------------------------------------
 void testApp::draw(){
@@ -73,7 +107,7 @@ void testApp::draw(){
 //	grayBg.draw(20,280);
 	grayDiff.draw(360,280);
 
-    edgeImage.draw(20,280);
+    thresh_resized.draw(20,280);
     
 
 	// finally, a report:
