@@ -18,14 +18,15 @@ void testApp::setup(){
 	grayDiff.allocate(320,240);
     
     thresh_resized.allocate(320,240);
-    
     thresh_resized_width    = 80;
     thresh_resized_height   = 60;
+    
+    tempFrame.allocate(320,240);
     
 	bLearnBakground = true;
 	threshold = 80;
     
-    ofSetFrameRate(5);
+    ofSetFrameRate(60);
 }
 
 //--------------------------------------------------------------
@@ -64,6 +65,8 @@ void testApp::update(){
 		// also, find holes is set to true so we will get interior contours as well....
 //		contourFinder.findContours(grayDiff, 20, (340*240)/3, 1, true);	// find holes
         
+        
+        findEdges( &colorImg, 150, 250, 3 );
         createPoints();
 	}
     
@@ -74,15 +77,15 @@ void testApp::createPoints()
     points.resize( 0 );
     triangulator.reset();
     
-    thresh_resized.resize( grayDiff.width, grayDiff.height );
-    thresh_resized = grayDiff;
+    thresh_resized.resize( tempFrame.width, tempFrame.height );
+    thresh_resized = tempFrame;
     thresh_resized.resize( thresh_resized_width, thresh_resized_height );
     
     unsigned char * pixels = thresh_resized.getPixels();
     int length = thresh_resized_width * thresh_resized_height;
     
     for (int i=0; i<length; i++) {
-        if (pixels[i] > 0 && ofRandom(0, 1) < .5 ){
+        if (pixels[i] > 0 ) { //&& ofRandom(0, 1) < .5 ){
             float x = i % thresh_resized_width / (float)thresh_resized_width ;
             float y = i / thresh_resized_width / (float)thresh_resized_height;
             ofPoint point = ofPoint(x,y);
@@ -103,6 +106,16 @@ void testApp::createPoints()
 }
 
 
+// Function to find the edges of a given IplImage object
+void testApp::findEdges( ofxCvColorImage * sourceFrame, double thelowThreshold, double theHighThreshold, double theAperture)
+{   
+    tempFrame = colorImg;
+    // Perform canny edge finding on tempframe, and push the result back into itself!
+	cvCanny(tempFrame.getCvImage(), tempFrame.getCvImage(), thelowThreshold, theHighThreshold, theAperture);
+}
+
+
+//--------------------------------------------------------------
 void testApp::drawPoints( int x, int y )
 {
     ofSetColor(255, 0, 0);
@@ -111,21 +124,19 @@ void testApp::drawPoints( int x, int y )
     }
 }
 
-
-//--------------------------------------------------------------
 void testApp::draw(){
 
 	// draw the incoming, the grayscale, the bg and the thresholded difference
-//	ofSetColor(0xffffff);
-//	colorImg.draw(20,20);
-//	grayImage.draw(360,20);
-////	grayBg.draw(20,280);
-//	grayDiff.draw(360,280);
-//
-//    thresh_resized.draw(20,280);
+	ofSetColor(0xffffff);
+	colorImg.draw(20,20);
+	grayImage.draw(360,20);
+//	grayBg.draw(20,280);
+	grayDiff.draw(360,280);
+
+    tempFrame.draw(20,280);
+    
 //    drawPoints(20,280);
-//    
-	ofSetColor(0, 255, 0);
+//	  ofSetColor(0, 255, 0);
     triangulator.drawTriangles();
 
 	// finally, a report:

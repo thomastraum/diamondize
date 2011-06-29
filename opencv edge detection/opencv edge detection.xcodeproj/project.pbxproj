@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		64D3D80B13BB8F74009CC697 /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D3D80413BB8F74009CC697 /* Delaunay.cpp */; };
-		64D3D80C13BB8F74009CC697 /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 64D3D80713BB8F74009CC697 /* ofxDelaunay.cpp */; };
+		6416440B13BB93D900B77967 /* Delaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6416440413BB93D900B77967 /* Delaunay.cpp */; };
+		6416440C13BB93D900B77967 /* ofxDelaunay.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6416440713BB93D900B77967 /* ofxDelaunay.cpp */; };
 		E44667570F5B3E04005D0BF0 /* ofxCvColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E446667D0F5B3E04005D0BF0 /* ofxCvColorImage.cpp */; };
 		E44667580F5B3E04005D0BF0 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E44666800F5B3E04005D0BF0 /* ofxCvContourFinder.cpp */; };
 		E44667590F5B3E04005D0BF0 /* ofxCvFloatImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E44666820F5B3E04005D0BF0 /* ofxCvFloatImage.cpp */; };
@@ -87,10 +87,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		64D3D80413BB8F74009CC697 /* Delaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Delaunay.cpp; sourceTree = "<group>"; };
-		64D3D80513BB8F74009CC697 /* Delaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Delaunay.h; sourceTree = "<group>"; };
-		64D3D80713BB8F74009CC697 /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
-		64D3D80813BB8F74009CC697 /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelaunay.h; sourceTree = "<group>"; };
+		6416440413BB93D900B77967 /* Delaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Delaunay.cpp; sourceTree = "<group>"; };
+		6416440513BB93D900B77967 /* Delaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Delaunay.h; sourceTree = "<group>"; };
+		6416440713BB93D900B77967 /* ofxDelaunay.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxDelaunay.cpp; sourceTree = "<group>"; };
+		6416440813BB93D900B77967 /* ofxDelaunay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxDelaunay.h; sourceTree = "<group>"; };
 		E446664F0F5B3E03005D0BF0 /* cv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cv.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/cv.h; sourceTree = SOURCE_ROOT; };
 		E44666500F5B3E03005D0BF0 /* cv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = cv.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/cv.hpp; sourceTree = SOURCE_ROOT; };
 		E44666510F5B3E03005D0BF0 /* cvaux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cvaux.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/cvaux.h; sourceTree = SOURCE_ROOT; };
@@ -200,37 +200,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		64D3D7FD13BB8F74009CC697 /* ofxDelaunay */ = {
+		641643FD13BB93D900B77967 /* ofxDelaunay */ = {
 			isa = PBXGroup;
 			children = (
-				64D3D80213BB8F74009CC697 /* libs */,
-				64D3D80613BB8F74009CC697 /* src */,
+				6416440213BB93D900B77967 /* libs */,
+				6416440613BB93D900B77967 /* src */,
 			);
 			path = ofxDelaunay;
 			sourceTree = "<group>";
 		};
-		64D3D80213BB8F74009CC697 /* libs */ = {
+		6416440213BB93D900B77967 /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				64D3D80313BB8F74009CC697 /* Delaunay */,
+				6416440313BB93D900B77967 /* Delaunay */,
 			);
 			path = libs;
 			sourceTree = "<group>";
 		};
-		64D3D80313BB8F74009CC697 /* Delaunay */ = {
+		6416440313BB93D900B77967 /* Delaunay */ = {
 			isa = PBXGroup;
 			children = (
-				64D3D80413BB8F74009CC697 /* Delaunay.cpp */,
-				64D3D80513BB8F74009CC697 /* Delaunay.h */,
+				6416440413BB93D900B77967 /* Delaunay.cpp */,
+				6416440513BB93D900B77967 /* Delaunay.h */,
 			);
 			path = Delaunay;
 			sourceTree = "<group>";
 		};
-		64D3D80613BB8F74009CC697 /* src */ = {
+		6416440613BB93D900B77967 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				64D3D80713BB8F74009CC697 /* ofxDelaunay.cpp */,
-				64D3D80813BB8F74009CC697 /* ofxDelaunay.h */,
+				6416440713BB93D900B77967 /* ofxDelaunay.cpp */,
+				6416440813BB93D900B77967 /* ofxDelaunay.h */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -238,7 +238,7 @@
 		E44665C70F5B3E03005D0BF0 /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				64D3D7FD13BB8F74009CC697 /* ofxDelaunay */,
+				641643FD13BB93D900B77967 /* ofxDelaunay */,
 				E446663B0F5B3E03005D0BF0 /* ofxOpenCv */,
 			);
 			name = addons;
@@ -714,8 +714,8 @@
 				E446675A0F5B3E04005D0BF0 /* ofxCvGrayscaleImage.cpp in Sources */,
 				E446675B0F5B3E04005D0BF0 /* ofxCvImage.cpp in Sources */,
 				E446675C0F5B3E04005D0BF0 /* ofxCvShortImage.cpp in Sources */,
-				64D3D80B13BB8F74009CC697 /* Delaunay.cpp in Sources */,
-				64D3D80C13BB8F74009CC697 /* ofxDelaunay.cpp in Sources */,
+				6416440B13BB93D900B77967 /* Delaunay.cpp in Sources */,
+				6416440C13BB93D900B77967 /* ofxDelaunay.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

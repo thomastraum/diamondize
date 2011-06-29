@@ -6,7 +6,7 @@
 #include "ofxOpenCv.h"
 #include "ofxDelaunay.h"
 
-//#define _USE_LIVE_VIDEO		// uncomment this to use a live camera
+#define _USE_LIVE_VIDEO		// uncomment this to use a live camera
 								// otherwise, we'll use a movie file
 
 class testApp : public ofBaseApp{
@@ -24,10 +24,12 @@ class testApp : public ofBaseApp{
 		void mouseReleased(int x, int y, int button);
 		void windowResized(int w, int h);
 
-        void createPoints();
+        void createPoints( );
         void scaleToSize();
         void drawPoints( int x, int y );
     
+        void findEdges( ofxCvColorImage * sourceFrame, double thelowThreshold, double theHighThreshold, double theAperture);
+
         #ifdef _USE_LIVE_VIDEO
 		  ofVideoGrabber 		vidGrabber;
 		#else
@@ -42,6 +44,8 @@ class testApp : public ofBaseApp{
 
         ofxCvGrayscaleImage     thresh_resized;
         ofxDelaunay             triangulator;
+    
+        ofxCvGrayscaleImage     tempFrame;
     
         ofxCvContourFinder 	contourFinder;
 
