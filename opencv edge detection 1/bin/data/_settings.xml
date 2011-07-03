@@ -1,0 +1,10 @@
+<controls>
+    <SliderInt_low_threshold>
+        <name>low_threshold</name>
+        <value>37</value>
+    </SliderInt_low_threshold>
+    <SliderInt_high_threshold>
+        <name>high_threshold</name>
+        <value>141</value>
+    </SliderInt_high_threshold>
+</controls>

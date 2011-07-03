@@ -1,0 +1,10 @@
+<controls>
+    <Toggle_Show_Triangluation>
+        <name>Show Triangluation</name>
+        <value>1</value>
+    </Toggle_Show_Triangluation>
+    <Toggle_Drawing>
+        <name>Drawing</name>
+        <value>1</value>
+    </Toggle_Drawing>
+</controls>
