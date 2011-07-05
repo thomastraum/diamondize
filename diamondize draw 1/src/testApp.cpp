@@ -7,26 +7,38 @@ void testApp::setup(){
     ofSetFrameRate(60);
     ofSetFullscreen(true);
     
-    
     img.loadImage( "test.jpg" );
     
     show_triangulation  = false;
+    show_image          = true;
     drawing_enabled     = false;
     
-    // 'gui' is a global variable declared in ofxSimpleGuiToo.h
+    painting            = false;
+    paint_radius        = 10;
+    
 	gui.addTitle("General");//    gui.addSlider( "aperature", aperature, 1,10 );
+    gui.addToggle( "Show Image", show_image );
     gui.addToggle( "Show Triangluation", show_triangulation );
     gui.addToggle( "Drawing", drawing_enabled );
+    gui.addSlider( "Paint Radius", paint_radius, 0, 100 );
+    
     gui.show();
+
+    // ofxVectorGraphics //
+	capture = false;
 }
 
 
 //--------------------------------------------------------------
 void testApp::update(){
-	ofBackground(100,100,100);
-
-    triangulator.triangulate();
     
+	ofBackground(100,100,100);
+    
+    if (painting && drawing_enabled ) {
+        
+        addPoint( mouseX + ofRandom(0, 1) * paint_radius, mouseY + ofRandom(0,1) * paint_radius );
+    } 
+        triangulator.triangulate();
 }
 
 void testApp::addPoint(int x, int y)
@@ -48,7 +60,9 @@ void testApp::draw(){
     
     ofSetColor(255, 255, 255);
     
-    img.draw(0,0, ofGetWidth(), ofGetHeight() );
+    if (show_image) {
+        img.draw(0,0, ofGetWidth(), ofGetHeight() );    
+    }
     
     if ( show_triangulation ) {
         ofSetColor(255, 255, 255, 100);
@@ -56,8 +70,12 @@ void testApp::draw(){
     }
 
 	gui.draw();
+    
+    if (capture) {
+        triangulator.exportToEps();
+    }
+    
 }
-
 
 //--------------------------------------------------------------
 void testApp::keyPressed  (int key){
@@ -65,6 +83,9 @@ void testApp::keyPressed  (int key){
 	switch (key){
         case 'd':
             drawing_enabled = !drawing_enabled;
+            break;
+        case 'c':
+            capture = true;
             break;
 	}
 }
@@ -78,14 +99,15 @@ void testApp::mouseDragged(int x, int y, int button){
 }
 
 //--------------------------------------------------------------
-void testApp::mousePressed(int x, int y, int button){
-    
-    
+void testApp::mousePressed(int x, int y, int button)
+{
+//    painting = true;
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased(int x, int y, int button){
-    
+void testApp::mouseReleased(int x, int y, int button)
+{    
+//    painting = false;    
     addPoint( x, y );
 }
 
