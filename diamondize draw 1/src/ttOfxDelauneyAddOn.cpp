@@ -12,7 +12,7 @@
 void ttOfxDelauneyAddOn::exportToEps()
 {
     char reportStr[1024];
-    sprintf( reportStr, "test-%i-%i-%i.ps", ofGetHours(), ofGetMinutes(), ofGetSeconds() );
+    sprintf( reportStr, "export/test-%i-%i-%i.ps", ofGetHours(), ofGetMinutes(), ofGetSeconds() );
     output.beginEPS( reportStr );
     
     for(int i = 0; i < ntri; i++){

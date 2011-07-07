@@ -7,7 +7,7 @@ void testApp::setup(){
     ofSetFrameRate(60);
     ofSetFullscreen(true);
     
-    img.loadImage( "test.jpg" );
+    img.loadImage( "flower.jpg" );
     
     show_triangulation  = false;
     show_image          = true;
@@ -61,7 +61,16 @@ void testApp::draw(){
     ofSetColor(255, 255, 255);
     
     if (show_image) {
-        img.draw(0,0, ofGetWidth(), ofGetHeight() );    
+        
+        if (img.width >= img.height) {
+            float scale = ofGetWidth()/(float)img.width;
+            img.draw(0,0, ofGetWidth(),  scale * img.height );    
+        } else  {
+            float scale = ofGetHeight()/(float)img.height;
+            img.draw(0,0, scale * img.width, ofGetHeight() );    
+        }
+        
+        
     }
     
     if ( show_triangulation ) {
@@ -73,12 +82,13 @@ void testApp::draw(){
     
     if (capture) {
         triangulator.exportToEps();
+        capture = false;
     }
     
 }
 
 //--------------------------------------------------------------
-void testApp::keyPressed  (int key){
+void testApp::keyReleased  (int key){
 
 	switch (key){
         case 'd':
@@ -86,6 +96,9 @@ void testApp::keyPressed  (int key){
             break;
         case 'c':
             capture = true;
+            break;
+        case ' ':
+            gui.toggleDraw();
             break;
 	}
 }
