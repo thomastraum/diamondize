@@ -1,7 +1,7 @@
 <controls>
     <Toggle_Show_Image>
         <name>Show Image</name>
-        <value>1</value>
+        <value>0</value>
     </Toggle_Show_Image>
     <Toggle_Show_Triangluation>
         <name>Show Triangluation</name>
@@ -13,6 +13,6 @@
     </Toggle_Drawing>
     <SliderInt_Paint_Radius>
         <name>Paint Radius</name>
-        <value>10</value>
+        <value>4</value>
     </SliderInt_Paint_Radius>
 </controls>

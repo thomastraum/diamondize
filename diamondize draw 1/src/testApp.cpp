@@ -4,10 +4,9 @@
 //--------------------------------------------------------------
 void testApp::setup(){
 
-    ofSetFrameRate(60);
-    ofSetFullscreen(true);
+    ofSetFrameRate(10);
     
-    img.loadImage( "flower.jpg" );
+    img.loadImage( "Tiger Face.jpg" );
     
     show_triangulation  = false;
     show_image          = true;
@@ -26,6 +25,8 @@ void testApp::setup(){
 
     // ofxVectorGraphics //
 	capture = false;
+    
+    triangulator.init( 100000 );
 }
 
 
@@ -100,6 +101,9 @@ void testApp::keyReleased  (int key){
         case ' ':
             gui.toggleDraw();
             break;
+        case 'f':
+            ofToggleFullscreen();
+            break;
 	}
 }
 
@@ -114,14 +118,14 @@ void testApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button)
 {
-//    painting = true;
+    painting = true;
 }
 
 //--------------------------------------------------------------
 void testApp::mouseReleased(int x, int y, int button)
 {    
-//    painting = false;    
-    addPoint( x, y );
+    painting = false;    
+//    addPoint( x, y );
 }
 
 //--------------------------------------------------------------
