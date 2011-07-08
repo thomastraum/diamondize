@@ -71,7 +71,6 @@ void testApp::draw(){
             img.draw(0,0, scale * img.width, ofGetHeight() );    
         }
         
-        
     }
     
     if ( show_triangulation ) {
