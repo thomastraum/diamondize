@@ -5,12 +5,8 @@
 void testApp::setup(){
 
     ofSetFrameRate(10);
-    
-<<<<<<< HEAD
-    img.loadImage( "pics/1113799528.jpg" ); //"Tiger Face.jpg" );
-=======
-    img.loadImage( "Socotra_dragon_tree.JPG" ); //"Tiger Face.jpg" );
->>>>>>> aaa
+
+    img.loadImage( "pics/Underwater Landscapes  Wallpaper (79).jpg" ); //"Tiger Face.jpg" );
     
     show_triangulation  = false;
     show_image          = true;
