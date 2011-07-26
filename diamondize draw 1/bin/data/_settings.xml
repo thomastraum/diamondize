@@ -13,6 +13,10 @@
     </Toggle_Drawing>
     <SliderInt_Paint_Radius>
         <name>Paint Radius</name>
+<<<<<<< HEAD
         <value>6</value>
+=======
+        <value>2</value>
+>>>>>>> aaa
     </SliderInt_Paint_Radius>
 </controls>
