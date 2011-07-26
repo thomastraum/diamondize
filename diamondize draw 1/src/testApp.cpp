@@ -6,7 +6,7 @@ void testApp::setup(){
 
     ofSetFrameRate(10);
     
-    img.loadImage( "0000_QUALLEHELG01_USCHILLING_p.jpg" ); //"Tiger Face.jpg" );
+    img.loadImage( "pics/1113799528.jpg" ); //"Tiger Face.jpg" );
     
     show_triangulation  = false;
     show_image          = true;
