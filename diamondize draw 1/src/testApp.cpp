@@ -6,7 +6,7 @@ void testApp::setup(){
 
     ofSetFrameRate(10);
 
-    img.loadImage( "pics/Underwater Landscapes  Wallpaper (79).jpg" ); //"Tiger Face.jpg" );
+    img.loadImage( "pics/big_rock_at_sea.jpg" ); //"Tiger Face.jpg" );
     
     show_triangulation  = false;
     show_image          = true;
