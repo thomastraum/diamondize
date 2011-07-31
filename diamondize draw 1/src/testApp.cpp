@@ -6,7 +6,7 @@ void testApp::setup(){
 
     ofSetFrameRate(10);
 
-    img.loadImage( "pics/Underwater Landscapes  Wallpaper (79).jpg" ); //"Tiger Face.jpg" );
+    img.loadImage( "pics/walross.jpg" ); //"Tiger Face.jpg" );
     
     show_triangulation  = false;
     show_image          = true;
@@ -91,6 +91,9 @@ void testApp::draw(){
 void testApp::keyReleased  (int key){
 
 	switch (key){
+        case 'i':
+            show_image = !show_image;
+            break;
         case 'd':
             drawing_enabled = !drawing_enabled;
             break;
