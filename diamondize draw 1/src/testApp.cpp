@@ -6,7 +6,7 @@ void testApp::setup(){
 
     ofSetFrameRate(10);
 
-    img.loadImage( "pics/cat.gif" ); //"Tiger Face.jpg" );
+    img.loadImage( "pics/angler-fish1.jpg" ); //"Tiger Face.jpg" );
     
     show_triangulation  = false;
     show_image          = true;
